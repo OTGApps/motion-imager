@@ -6,17 +6,9 @@ motion-imager is a RubyMotion DSL in top of [JTSImageViewController](https://git
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'motion-imager'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install motion-imager
+* Add `gem 'motion-imager'` to your gemfile
+* run `bundle`
+* run `rake pod:install`
 
 ## Usage
 
