@@ -1,6 +1,6 @@
 # motion-imager
 
-motion-imager is a RubyMotion DSL in top of [JTSImageViewController](https://github.com/jaredsinclair/JTSImageViewController) allowing you to easily create a "light-box" type view for users to view an image and interact with it.
+motion-imager is a RubyMotion DSL in top of [JTSImageViewController](https://github.com/jaredsinclair/JTSImageViewController) by Jared Sinclair allowing you to easily create a "light-box" type view for users to view an image and interact with it.
 
 ## Installation
 
