@@ -15,11 +15,11 @@ class RootScreen < PM::TableScreen
   end
 
   def banecat
-    mi = MotionImager.new({
+    $mi = MotionImager.new({
       image: UIImage.imageNamed('banecat.jpg'),
       presenting_from: WeakRef.new(self),
     })
-    mi.show
+    $mi.show
   end
 
   def banecat_dismiss

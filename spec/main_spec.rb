@@ -3,7 +3,7 @@ describe "Application 'motion-imager'" do
     @app = UIApplication.sharedApplication
   end
 
-  it "has one window" do
-    @app.windows.size.should == 1
+  it "has window(s)" do
+    @app.windows.size.should > 0
   end
 end
