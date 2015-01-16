@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "motion-cocoapods", ">= 1.4.1"
   spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'ProMotion'
 end
