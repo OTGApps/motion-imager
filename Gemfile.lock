@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    motion-imager (0.1.0)
+    motion-imager (0.2.0)
       motion-cocoapods (>= 1.4.1)
 
 GEM
