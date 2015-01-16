@@ -1,38 +1,44 @@
 class MotionImager
 
   def initialize(args={})
-    show(args)
+    @args = args
   end
 
-  def show(args={})
-    controller(args).showFromViewController(args[:presenting_from],
-      transition: transitions[args[:transition]] || JTSImageViewControllerTransition_FromOriginalPosition
+  def show
+    @c = controller
+    @c.showFromViewController(@args[:presenting_from],
+      transition: transitions[@args[:transition]] || JTSImageViewControllerTransition_FromOriginalPosition
     )
   end
 
-  def controller(args = {})
-    JTSImageViewController.alloc.initWithImageInfo(image_info(args),
-                 mode: modes[args[:mode]] || JTSImageViewControllerMode_Image,
-      backgroundStyle: backgrounds[args[:background]] || JTSImageViewControllerBackgroundStyle_Scaled
+  def hide(animated = true)
+    @c.dismiss(animated) if @c
+  end
+  alias :dismiss :hide
+
+  def controller
+    JTSImageViewController.alloc.initWithImageInfo(image_info,
+                 mode: modes[@args[:mode]] || JTSImageViewControllerMode_Image,
+      backgroundStyle: backgrounds[@args[:background]] || JTSImageViewControllerBackgroundOption_Scaled
     )
   end
 
-  def image_info(args = {})
+  def image_info
     JTSImageInfo.new.tap do |i|
-      if args[:image]
-        args[:image] = UIImage.imageNamed(args[:image]) if args[:image].is_a?(String)
-        i.image = args[:image]
-      elsif args[:url]
-        args[:url] = NSURL.URLWithString(args[:url]) if args[:url].is_a?(String)
-        if args[:placeholder]
-          args[:placeholder] = UIImage.imageNamed(args[:placeholder]) if args[:placeholder].is_a?(String)
-          i.placeholderImage = args[:placeholder]
+      if @args[:image]
+        @args[:image] = UIImage.imageNamed(@args[:image]) if @args[:image].is_a?(String)
+        i.image = @args[:image]
+      elsif @args[:url]
+        @args[:url] = NSURL.URLWithString(@args[:url]) if @args[:url].is_a?(String)
+        if @args[:placeholder]
+          @args[:placeholder] = UIImage.imageNamed(@args[:placeholder]) if @args[:placeholder].is_a?(String)
+          i.placeholderImage = @args[:placeholder]
         end
-        i.imageURL = args[:url]
+        i.imageURL = @args[:url]
       end
-      i.altText = args[:text] if args[:text]
-      i.referenceRect = args[:rect] if args[:rect]
-      i.referenceView = args[:view] if args[:view]
+      i.altText = @args[:text] if @args[:text]
+      i.referenceRect = @args[:rect] if @args[:rect]
+      i.referenceView = @args[:view] if @args[:view]
     end
   end
 

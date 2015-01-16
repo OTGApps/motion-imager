@@ -18,7 +18,7 @@ Using a UIImage:
 MotionImager.new({
   image: UIImage.imageNamed('something'),
   presenting_from: WeakRef.new(self),
-})
+}).show
 ```
 
 Using a URL:
@@ -29,7 +29,7 @@ MotionImager.new({
   url: 'https://www.google.com/images/srpr/logo11w.png',
   placeholder: 'my_placeholder_image',
   presenting_from: WeakRef.new(self),
-})
+}).show
 
 ```
 
@@ -41,8 +41,21 @@ MotionImager.new({
   transition: :original,
   mode: :alt_text,
   text: "This is a cool image",
-})
+}).show
 
+```
+
+Manually dismiss the lightbox:
+
+```ruby
+mi = MotionImager.new({
+  image: UIImage.imageNamed('something'),
+  presenting_from: WeakRef.new(self),
+})
+mi.show
+
+# some time later:
+mi.dismiss # mi.hide will work too!
 ```
 
 Documentation for all available options:
