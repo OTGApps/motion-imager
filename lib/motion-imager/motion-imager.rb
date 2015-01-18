@@ -17,7 +17,7 @@ class MotionImager
   alias :dismiss :hide
 
   def controller
-    JTSImageViewController.alloc.initWithImageInfo(image_info,
+    @jts_controller ||= JTSImageViewController.alloc.initWithImageInfo(image_info,
                  mode: modes[@args[:mode]] || JTSImageViewControllerMode_Image,
       backgroundStyle: backgrounds[@args[:background]] || JTSImageViewControllerBackgroundOption_Scaled
     )
